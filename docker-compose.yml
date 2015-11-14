@@ -1,0 +1,16 @@
+web:
+    image: dd4ae5b2cdd0
+    ports:
+        - "80:80" # web
+        - "2222:22" # ssh
+    volumes:
+        - ~/Code/laravel5_1:/var/www/laravel # all apps
+    links:
+        - mysql
+mysql:
+    image: orchardup/mysql
+    restart: always
+    ports:
+        - "3306:3306"
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
