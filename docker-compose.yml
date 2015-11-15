@@ -1,5 +1,5 @@
 web:
-    image: dd4ae5b2cdd0
+    image: aa6cd98ff587
     ports:
         - "80:80" # web
         - "2222:22" # ssh
@@ -7,6 +7,8 @@ web:
         - ~/Code/laravel5_1:/var/www/laravel # all apps
     links:
         - mysql
+        - redis
+
 mysql:
     image: orchardup/mysql
     restart: always
@@ -14,3 +16,6 @@ mysql:
         - "3306:3306"
     environment:
         - MYSQL_ROOT_PASSWORD=root
+
+redis:
+    image: redis:latest

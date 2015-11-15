@@ -6,7 +6,15 @@ MAINTAINER Ed Boraas <ed@boraas.ca>
 #RUN wget -q http://www.dotdeb.org/dotdeb.gpg -O - | apt-key add -
 RUN apt-get update && apt-get -y install php5 git curl php5-mcrypt php5-json && apt-get -y autoremove && apt-get clean
 RUN apt-get update && apt-get -y install php5-mysql && apt-get clean 
-RUN apt-get update && apt-get -y install php5-redis php5-mongo php5-solr php-horde-elasticsearch && apt-get clean 
+RUN apt-get update 
+RUN apt-get -y install memcached php5-memcache 
+RUN apt-get -y install php5-redis
+#RUN apt-get -y install php-horde-elasticsearch
+RUN apt-get -y install php5-mongo
+RUN apt-get -y install php5-solr
+RUN apt-get clean 
+
+
 RUN /usr/sbin/a2enmod rewrite
 
 # This is no longer available by default in jessie's apache2
